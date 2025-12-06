@@ -62,7 +62,7 @@ The project follows a modular architecture as required:
 
 ```bash
 git clone https://github.com/ahmedelsafty711/CI_Project.git
-cd [CI_Project]
+cd CI_Project
 ```
 
 ### 2\. Set Up Virtual Environment
@@ -125,4 +125,3 @@ jupyter notebook notebooks/project_demo.ipynb
 
 *This project was submitted for the CSE473s Computational Intelligence course at Ain Shams University.*
 
-```
