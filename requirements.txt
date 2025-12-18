@@ -1,4 +1,8 @@
+jupyter
 numpy
 matplotlib
 jupyter
-tensorflow  # Only needed for Part 3 comparison
+tensorflow  # Only needed for comparison
+scikit-learn
+seaborn
+flask  # For GUI
