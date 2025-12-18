@@ -1,42 +1,84 @@
-# CSE473s: Build Your Own Neural Network Library
+# 🧠 Custom Neural Network Library
+### CSE473s — Computational Intelligence Project
 
-**Course:** CSE473s - Computational Intelligence (Fall 2025)  
-**Institution:** Faculty of Engineering, Ain Shams University  
 
-## 📌 Project Overview
-This project involves developing a foundational neural network library from scratch using **only Python and NumPy**. The goal is to demystify deep learning frameworks by implementing the core mathematics of forward propagation, backpropagation, and optimization manually.
-
-The library is validated through three major tasks:
-1.  **Solving the XOR Problem:** Proving the library can learn non-linear decision boundaries.
-2.  **Unsupervised Learning (Autoencoder):** Compressing and reconstructing MNIST images.
-3.  **Latent Space Classification:** Using the trained encoder as a feature extractor for an SVM classifier.
+A foundational deep learning framework built from scratch using **only Python and NumPy**. This project demystifies modern deep learning libraries (like TensorFlow or PyTorch) by manually implementing the core mathematics of forward propagation, backpropagation, and optimization.
 
 ---
+
+## 📖 Table of Contents
+- [Overview](#-overview)
+- [Quick Start](#-quick-start)
+- [Repository Structure](#-repository-structure)
+- [Features implemented](#-features-implemented) 
+- [Installation & Usage](#-installation--usage)
+- [Benchmarks & Results](#-benchmarks--results)
+- [Contributors](#-contributors)
+
+---
+
+## 🔭 Overview
+Developed for the **Fall 2025 CSE473s** course at **Ain Shams University**, this library serves as an educational tool to understand the inner workings of neural networks.
+
+The library is robust enough to solve non-linear problems (like XOR), perform unsupervised learning (Autoencoders on MNIST), and act as a feature extractor for hybrid models.
+
+---
+
+
+## 🚀 Quick Start
+
+Here is a simple example of how to use the library to create a network for the XOR problem:
+
+```python
+import numpy as np
+from lib.network import Network
+from lib.layers import Dense
+from lib.activations import ReLU, Sigmoid
+
+# 1. Prepare Data (XOR)
+X = np.array([[0,0], [0,1], [1,0], [1,1]])
+y = np.array([[0], [1], [1], [0]])
+
+# 2. Build the Model
+model = Network()
+model.add(Dense(input_size=2, output_size=4))  # Hidden Layer
+model.add(ReLU())                              # Activation
+model.add(Dense(input_size=4, output_size=1))  # Output Layer
+model.add(Sigmoid())                           # Activation
+
+# 3. Train
+# Note: Adjust parameters (epochs, lr) based on your specific implementation
+model.train(X, y, epochs=1000, learning_rate=0.1)
+
+# 4. Predict
+predictions = model.predict(X)
+print("Predictions:", predictions)
+```
+----
 
 ## 📂 Repository Structure
 The project follows a modular architecture as required:
 
-```text
-├── lib/                    # The Core Neural Network Library
-│   ├── __init__.py
-│   ├── layers.py           # Dense layer implementation (Forward/Backward)
-│   ├── activations.py      # ReLU, Sigmoid, Tanh, Softmax
-│   ├── losses.py           # Mean Squared Error (MSE)
-│   ├── optimizer.py        # Stochastic Gradient Descent (SGD)
-│   └── network.py          # Network class to orchestrate training
+```bash
+CI_Project/
+├── lib/                  # 📦 The Core Library
+│   ├── activations.py    #    Activation classes (ReLU, Sigmoid, etc.)
+│   ├── layers.py         #    Dense layer implementation
+│   ├── losses.py         #    Loss functions (MSE)
+│   ├── optimizer.py      #    SGD implementation
+│   └── network.py        #    Network class (Trainer/Predictor)
 │
-├── notebooks/              # Demos and Experiments
-│   └── project_demo.ipynb  # Main demo (Gradient Check, XOR, Autoencoder, TF Comparison)
+├── notebooks/            # 📓 Experiments & Demos
+│   └── project_demo.ipynb#    XOR, Autoencoder, and TF Benchmarks
 │
-├── report/                 # Documentation
-│   └── project report.pdf  # Final detailed report and analysis
+├── report/               # 📄 Documentation
+│   └── project report.pdf
 │
-├── .gitignore
-├── README.md
-└── requirements.txt        # Dependencies (NumPy, Matplotlib, TensorFlow)
+├── requirements.txt      # 🧱 Dependencies
+└── README.md             # 🏠 You are here
 ````
 
------
+----
 
 ## 🚀 Features implemented
 
@@ -99,29 +141,36 @@ jupyter notebook notebooks/project_demo.ipynb
 
 -----
 
-## 📊 Results Snapshot
+## 📊 Benchmarks & Results
 
 ### XOR Problem
+* **Converged Loss:** ~0.0001 (MSE)
+* **Accuracy:** 100%
 
-  * **Converged Loss:** \~0.0001 (MSE)
-  * **Accuracy:** 100%
+### MNIST Autoencoder
+* **Configuration:** 784-64-784
+* **Accuracy/Loss:** Low Recon Loss
+* **Notes:** Successful image reconstruction
 
-### TensorFlow Benchmark
+### Comparisons
+* **Configuration:** vs TensorFlow
+* **Accuracy/Loss:** Faster
+* **Notes:** Outperformed TF on small datasets
 
-  * **Performance:** Our custom NumPy implementation proved significantly faster for small-scale datasets (XOR) compared to TensorFlow's computational graph overhead.
-  * **Convergence:** Both models converged to near-zero loss, validating the correctness of our mathematical implementation.
-
------
+---
 
 ## 👥 Contributors
 
-  * **Member 1:** [Adham Ehab Saleh]              - [2100679]
-  * **Member 2:** [Ahmed Mohamed Ramadan]         - [2100323]
-  * **Member 3:** [Ahmed Salah Eldin Abdelrahman] - [2100505]
-  * **Member 4:** [Ahmed Yasser Hosney]           - [2101101]
-  * **Member 5:** [Omar Magdy Abdelsattar]        - [2100273]
+| Name | ID
+| :--- | :--- 
+| **Adham Ehab Saleh** | 2100679
+| **Ahmed Mohamed Ramadan** | 2100323
+| **Ahmed Salah Eldeen** | 2100505
+| **Ahmed Yasser Hosney** | 2101101
+| **Omar Magdy Abdelsattar**| 2100273
 
------
+---
 
 *This project was submitted for the CSE473s Computational Intelligence course at Ain Shams University.*
+
 
