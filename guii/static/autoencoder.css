@@ -1,0 +1,89 @@
+
+.autoencoder-container {
+    max-width: 800px;
+}
+
+.canvases {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 2rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.canvas-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#input-canvas, #output-canvas {
+    border: 2px solid #333;
+    background-color: #000;
+    cursor: crosshair;
+    border-radius: 8px;
+}
+
+#output-canvas {
+    cursor: default;
+}
+
+.canvas-buttons {
+    margin-top: 1rem;
+    display: flex;
+    gap: 10px;
+}
+
+#reconstruct-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    font-weight: bold;
+}
+
+#clear-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+}
+
+.network-abstract {
+    margin-top: 2rem;
+}
+
+#network-abstract-vis {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f6f7f9;
+    border-radius: 8px;
+}
+
+.abstract-layer {
+    padding: 1rem 1.5rem;
+    margin: 0 0.5rem;
+    border-radius: 6px;
+    background-color: #e9ebee;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.abstract-layer h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    color: #4267B2;
+}
+
+.abstract-layer p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #606770;
+}
+
+.connections {
+    flex-grow: 1;
+    height: 2px;
+    background-color: #ccc;
+}

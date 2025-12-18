@@ -1,5 +1,7 @@
 # lib/network.py
 import numpy as np
+
+from .layers import Dense
 from .optimizer import SGD
 
 class Network:
@@ -20,12 +22,40 @@ class Network:
         result = []
 
         for i in range(samples):
-            output = input_data[i]
+            # Ensure input_data[i] is a numpy array
+            output = np.array(input_data[i], ndmin=1)
             for layer in self.layers:
                 output = layer.forward(output)
             result.append(output)
-            
+
         return result
+
+    def save(self, file_path):
+        """Saves the network's weights and biases to a file."""
+        params = {}
+        dense_layer_idx = 0
+        for layer in self.layers:
+            if isinstance(layer, Dense):
+                params[f'w{dense_layer_idx}'] = layer.weights
+                params[f'b{dense_layer_idx}'] = layer.biases
+                dense_layer_idx += 1
+        np.savez(file_path, **params)
+        print(f"Network saved to {file_path}")
+
+    def load(self, file_path):
+        """Loads the network's weights and biases from a file."""
+        params = np.load(file_path)
+        dense_layer_idx = 0
+        for layer in self.layers:
+            if isinstance(layer, Dense):
+                if f'w{dense_layer_idx}' in params:
+                    layer.weights = params[f'w{dense_layer_idx}']
+                    layer.biases = params[f'b{dense_layer_idx}']
+                    dense_layer_idx += 1
+                else:
+                    print(f"Warning: No weights found for layer {dense_layer_idx} in {file_path}")
+        print(f"Network loaded from {file_path}")
+
 
     def train(self, x_train, y_train, epochs, learning_rate):
         # Initialize optimizer

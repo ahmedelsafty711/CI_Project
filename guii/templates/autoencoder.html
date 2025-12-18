@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autoencoder Visualizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='autoencoder.css') }}">
+</head>
+<body>
+    <div class="container autoencoder-container">
+        <h1>Autoencoder Visualizer</h1>
+        <p>Draw a digit (0-9) in the left box, then click "Reconstruct".</p>
+        <div class="canvases">
+            <div class="canvas-wrapper">
+                <h3>Input Drawing</h3>
+                <canvas id="input-canvas" width="280" height="280"></canvas>
+                <div class="canvas-buttons">
+                    <button id="reconstruct-btn">Reconstruct</button>
+                    <button id="clear-btn">Clear</button>
+                </div>
+            </div>
+            <div class="canvas-wrapper">
+                <h3>Model Reconstruction</h3>
+                <canvas id="output-canvas" width="280" height="280"></canvas>
+            </div>
+        </div>
+        <div class="network-abstract">
+            <h3>Network Structure</h3>
+            <div id="network-abstract-vis"></div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='autoencoder.js') }}"></script>
+</body>
+</html>

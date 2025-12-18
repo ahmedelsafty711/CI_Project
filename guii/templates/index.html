@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Network Visualizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>XOR Network Visualizer</h1>
+        <div class="controls">
+            <span>Input:</span>
+            <button class="input-btn" data-input-index="0" data-value="-1">Input 1: [-1]</button>
+            <button class="input-btn" data-input-index="1" data-value="-1">Input 2: [-1]</button>
+            <button id="predict-btn">Predict</button>
+        </div>
+        <div id="network-visualization">
+            <svg id="nn-svg"></svg>
+        </div>
+        <div class="output">
+            <h2>Prediction: <span id="prediction-output">-</span></h2>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
